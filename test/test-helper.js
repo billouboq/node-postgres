@@ -39,8 +39,10 @@ assert.emits = function (item, eventName, callback, message) {
   item.once(eventName, function () {
     if (eventName === 'error') {
       // belt and braces test to ensure all error events return an error
-      assert.ok(arguments[0] instanceof Error,
-                'Expected error events to throw instances of Error but found: ' + sys.inspect(arguments[0]))
+      assert.ok(
+        arguments[0] instanceof Error,
+        'Expected error events to throw instances of Error but found: ' + sys.inspect(arguments[0])
+      )
     }
     called = true
     clearTimeout(id)
@@ -131,12 +133,15 @@ var expect = function (callback, timeout) {
   var executed = false
   timeout = timeout || parseInt(process.env.TEST_TIMEOUT) || 5000
   var id = setTimeout(function () {
-    assert.ok(executed,
-      'Expected execution of function to be fired within ' + timeout +
-      ' milliseconds ' +
-      +' (hint: export TEST_TIMEOUT=<timeout in milliseconds>' +
-      ' to change timeout globally)' +
-      callback.toString())
+    assert.ok(
+      executed,
+      'Expected execution of function to be fired within ' +
+        timeout +
+        ' milliseconds ' +
+        +' (hint: export TEST_TIMEOUT=<timeout in milliseconds>' +
+        ' to change timeout globally)' +
+        callback.toString()
+    )
   }, timeout)
 
   if (callback.length < 3) {
@@ -167,13 +172,12 @@ assert.isNull = function (item, message) {
 }
 
 const getMode = () => {
-  if (args.native) return 'native'
   if (args.binary) return 'binary'
   return ''
 }
 
 global.test = function (name, action) {
-  test.testCount ++
+  test.testCount++
   test[name] = action
   var result = test[name]()
   if (result === false) {
@@ -186,7 +190,6 @@ global.test = function (name, action) {
 // print out the filename
 process.stdout.write(require('path').basename(process.argv[1]))
 if (args.binary) process.stdout.write(' (binary)')
-if (args.native) process.stdout.write(' (native)')
 
 process.on('exit', function () {
   console.log('')
@@ -230,7 +233,9 @@ var Sink = function (expected, timeout, callback) {
 var getTimezoneOffset = Date.prototype.getTimezoneOffset
 
 var setTimezoneOffset = function (minutesOffset) {
-  Date.prototype.getTimezoneOffset = function () { return minutesOffset }
+  Date.prototype.getTimezoneOffset = function () {
+    return minutesOffset
+  }
 }
 
 var resetTimezoneOffset = function () {

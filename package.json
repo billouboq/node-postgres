@@ -2,15 +2,7 @@
   "name": "pg",
   "version": "7.4.1",
   "description": "PostgreSQL client - pure javascript & libpq with the same API",
-  "keywords": [
-    "database",
-    "libpq",
-    "pg",
-    "postgre",
-    "postgres",
-    "postgresql",
-    "rdbms"
-  ],
+  "keywords": ["database", "libpq", "pg", "postgre", "postgres", "postgresql", "rdbms"],
   "homepage": "http://github.com/brianc/node-postgres",
   "repository": {
     "type": "git",
@@ -39,7 +31,6 @@
     "eslint-plugin-standard": "3.0.1",
     "pg-copy-streams": "0.3.0"
   },
-  "minNativeVersion": "2.0.0",
   "scripts": {
     "test": "make test-all"
   },
